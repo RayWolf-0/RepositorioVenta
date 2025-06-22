@@ -35,7 +35,7 @@ public class VentasController {
     }
 
     @GetMapping("/{id_venta}")
-    public ResponseEntity<?> BuscarunaVenta(@PathVariable Long id_venta){
+    public ResponseEntity<?> BuscarunaVenta(@PathVariable int id_venta){
         try {
             Ventas ventabuscada = ventasservice.BuscarunaVenta(id_venta);
             return ResponseEntity.ok(ventabuscada);
@@ -44,8 +44,8 @@ public class VentasController {
         }
     }
 
-    @PostMapping
-    public ResponseEntity<?> GuardarVenta(@RequestBody Ventas ventaguardar){
+    @PostMapping("/{id_venta}")
+    public ResponseEntity<?> GuardarVenta(@RequestBody int ventaguardar){
         try {
             Ventas registrarventa = ventasservice.GuardarVenta(ventaguardar);
             return ResponseEntity.ok(registrarventa);

@@ -23,7 +23,7 @@ public class Ventas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_VENTA")
-    private Long id_venta;
+    private int id_venta;
 
     @Column(name = "ID_USUARIO", nullable = false)
     private Long id_usuario;

@@ -21,12 +21,12 @@ public class VentasService {
         return ventasrepository.findAll();
     }
 
-    public Ventas BuscarunaVenta(Long id_reclamo){
-        return ventasrepository.findById(id_reclamo).get();
+    public Ventas BuscarunaVenta(int id_venta){
+        return ventasrepository.findById(id_venta).get();
     }
 
-    public Ventas GuardarVenta(Ventas venta){
-        return ventasrepository.save(venta);
+    public Ventas GuardarVenta(int ventaguardar){
+        return ventasrepository.save(ventaguardar);
     }
 
 
