@@ -25,7 +25,7 @@ public class VentasService {
         return ventasrepository.findById(id_venta).get();
     }
 
-    public Ventas GuardarVenta(int ventaguardar){
+    public Ventas GuardarVenta(Ventas ventaguardar){
         return ventasrepository.save(ventaguardar);
     }
 

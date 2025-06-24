@@ -23,8 +23,7 @@ public class VentaAssemblerModel implements RepresentationModelAssembler<Ventas,
         return EntityModel.of(
             v,
             linkTo(methodOn(VentasController.class).BuscarunaVenta(v.getId_venta())).withRel("Listar-Venta-Buscada"),
-            linkTo(methodOn(VentasController.class).ListarVentas()).withRel("Todas-Las-Ventas"),
-            linkTo(methodOn(VentasController.class).GuardarVenta(v.getId_venta())).withRel("Guardar-una-venta")
+            linkTo(methodOn(VentasController.class).ListarVentas()).withRel("Todas-Las-Ventas")
         );
     }
 }

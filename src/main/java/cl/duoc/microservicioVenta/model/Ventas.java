@@ -26,17 +26,17 @@ public class Ventas {
     private int id_venta;
 
     @Column(name = "ID_USUARIO", nullable = false)
-    private Long id_usuario;
+    private int id_usuario;
 
     @Column(name = "ID_TIENDA", nullable = false)
-    private Long id_tienda;
+    private int id_tienda;
 
     @Column(name= "FECHA", nullable = false)
     @JsonFormat(pattern = "dd-mm-yyyy")
     private String fecha;
 
     @Column(name= "TOTAL", nullable = false, length = 11)
-    private Long total;
+    private int total;
 
 
 }
