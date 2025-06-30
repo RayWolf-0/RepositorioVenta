@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import cl.duoc.microservicioVenta.Assembler.VentaAssemblerModel;
 import cl.duoc.microservicioVenta.model.Ventas;
 import cl.duoc.microservicioVenta.service.VentasService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -31,6 +32,9 @@ public class VentasController {
     @Autowired
     private VentasService ventasservice;
 
+    @Autowired
+    private VentaAssemblerModel assembler;
+
     //Endpoint para listar las ventas
     @GetMapping
     @Operation(summary = "Listado de ventas", description = "Operación que lista las ventas")
@@ -47,7 +51,7 @@ public class VentasController {
         if (Ventas.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No hay ventas"); 
         } else {
-            return ResponseEntity.ok(Ventas);
+            return ResponseEntity.ok(assembler.toCollectionModel(Ventas));
             
         }
     }
@@ -69,7 +73,7 @@ public class VentasController {
     public ResponseEntity<?> BuscarunaVenta(@PathVariable int id_venta){
         try {
             Ventas ventabuscada = ventasservice.BuscarunaVenta(id_venta);
-            return ResponseEntity.ok(ventabuscada);
+            return ResponseEntity.ok(assembler.toModel(ventabuscada));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Venta no encontrada");
         }
@@ -90,7 +94,7 @@ public class VentasController {
     public ResponseEntity<?> GuardarVenta(@RequestBody Ventas ventaguardar){
         try {
             Ventas registrarventa = ventasservice.GuardarVenta(ventaguardar);
-            return ResponseEntity.ok(registrarventa);
+            return ResponseEntity.ok(assembler.toModel(registrarventa));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Venta no guardada");
         }
